@@ -2,7 +2,7 @@ import lib.data_input as data_input
 import lib.data_conf as data_conf
 
 path = "input"
-file = "exemple_v2.0.xlsx"
+file = "exemple_v2.0.xls"
 conf = data_conf.DataConf("conf")
 
 

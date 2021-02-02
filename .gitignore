@@ -2,3 +2,5 @@
 .pytest_cache*
 /.ref/
 .idea*
+/output_exemple_v2.0.xls
+/input/exemple_v2.0.xls
