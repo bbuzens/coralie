@@ -51,13 +51,16 @@ def test_DataConf_approx_age():
     setName = "imc_filles"
 
     age_approx = dataConf.approx_age(18, setName)
-    assert age_approx == 12
+    assert age_approx == 18
 
     age_approx = dataConf.approx_age(12, setName)
     assert age_approx == 12
 
     age_approx = dataConf.approx_age(19, setName)
-    assert age_approx == 24
+    assert age_approx == 18
+
+    age_approx = dataConf.approx_age(49, "taille_filles")
+    assert age_approx == 48
 
 
 def test_DataConf_get_group():

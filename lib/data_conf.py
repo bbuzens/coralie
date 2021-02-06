@@ -28,14 +28,18 @@ class DataConf:
     def approx_age(self, age, dataframe_name):
         ages_list = self[dataframe_name].loc[:, ["AGE"]]
         logging.debug("AGES_LIST :\n{}".format(ages_list))
-        tmp_dist = 1.0
         age_approx = age
-        age_max = ages_list.values[-1]
+        age_max = ages_list.values[-1][0]
+        tmp_dist = age_max
         for value in ages_list.values:
             iter_age = value[0]
-            dist = abs(iter_age - age) / age_max
+            dist = abs(iter_age - age)
             logging.debug("DIST : {}".format(dist))
             logging.debug("AGE APPROX : {}".format(age_approx))
+            if iter_age != iter_age :
+                print("Error NaN")
+                print("AGES_LIST :\n{}".format(ages_list))
+                raise ValueError
             if dist == 0.0:
                 age_approx = iter_age
                 break
@@ -49,6 +53,10 @@ class DataConf:
     def get_group(self, age, dataframe_name, value):
         dataframe = self.dataframes[dataframe_name].query("AGE=={}".format(age))
         if dataframe.empty:
+            print("AGE : {}".format(age))
+            print("DATA : {}".format(dataframe_name))
+            print("ERR_AGE_VALUE")
+            raise ValueError
             return "ERR_AGE_VALUE"
 
         dataframe_titles = []
